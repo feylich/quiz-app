@@ -3,7 +3,7 @@ const saveScoreBtn = document.getElementById('save-score-btn');
 const finalScore = document.getElementById('final-score');
 const mostRecentScore = localStorage.getItem('mostRecentScore');
 
-const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
 
 const MAX_HIGH_SCORES = 5;
 
@@ -26,6 +26,5 @@ saveHighScore = (e) => {
     highScores.splice(MAX_HIGH_SCORES);
     
     localStorage.setItem('highScores', JSON.stringify(highScores));
-
-    console.log(highScores);
+    window.location.assign('/index.html')
 };
