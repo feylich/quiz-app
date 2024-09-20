@@ -10,21 +10,40 @@ let score = 0;
 let questionCounter = 0;
 let availableQuestions = [];
 
-let questions = [];
-
-fetch("questions.json")
-    .then(res => {
-        console.log(res.json());
-        return res.json();
-    })
-    .then(loadedQuestions => {
-        console.log(loadedQuestions);
-        questions = loadedQuestions;
-        startGame();
-    })
-    .catch(err => {
-        console.error(err);
-    });
+let questions = [
+    {
+        question: "In which year did Swansea City FC first gain promotion to the premier league?",
+        choice1: "2008",
+        choice2: "2010",
+        choice3: "2011",
+        choice4: "2012",
+        answer: 3
+    },
+    {
+        question: "Which player holds the record for most league appearances for Swansea City FC?",
+        choice1: "Wilf Milne",
+        choice2: "Leon Britton",
+        choice3: "Alan Curtis",
+        choice4: "Ivor Allchurch",
+        answer: 1
+    },
+    {
+        question: "Who was Swansea's manager when they won the EFL Cup in 2013?",
+        choice1: "Roberto Martinez",
+        choice2: "Brendan Rogers",
+        choice3: "Michael Laudrup",
+        choice4: "Garry Monk",
+        answer: 3
+    },
+    {
+        question: "In what year was Swansea City FC (then Swansea Town) founded?",
+        choice1: "1897",
+        choice2: "1902",
+        choice3: "1907",
+        choice4: "1912",
+        answer: 4
+    }
+]
 
 //CONSTANTS
 const CORRECT_BONUS = 10;
@@ -42,7 +61,7 @@ getNewQuestion = () => {
     if(availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS) {
         localStorage.setItem('mostRecentScore', score);
         //go to the end page
-        return window.location.assign('end.html');
+        return window.location.assign('/end.html');
     };
 
     questionCounter++;
